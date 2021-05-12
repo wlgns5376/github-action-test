@@ -35,11 +35,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Docker meta
-        id: meta
-        uses: docker/metadata-action@v3
-        with:
-          images: name/app
+      - name: Get version from tag
+        id: tag_name
+        run: |
+          echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        shell: bash
 
-      - name: Output Docker meta
-        run: echo ${{ steps.meta.outputs.tags }}
+      - name: Output tag name
+        run: echo ${{ steps.tag_name.outputs.current_version }}
