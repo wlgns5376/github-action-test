@@ -35,11 +35,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           
-      - name: Get version from tag
-        id: tag_name
-        run: |
-          echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
-        shell: bash
 
-      - name: Output tag name
-        run: echo ${{ steps.tag_name.outputs.current_version }}
+      - name: Output tag verion
+        run: echo ${{ steps.tag_version.outputs.new_version }}
