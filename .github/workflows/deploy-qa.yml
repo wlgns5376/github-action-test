@@ -50,7 +50,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: wlgns5376/k8s-deploy-test
-          token: ${{ secrets.ACTIONS_TOKEN }}
+          token: ${{ secrets.ACTION_TOKEN }}
           path: k8s-deploy-test
 
       - name: Setup Kustomize
