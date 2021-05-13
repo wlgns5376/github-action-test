@@ -35,4 +35,4 @@ jobs:
           echo "::set-output name=version::$VERSION"
 
       - name: Production deploy
-        run: echo ${{ steps.image.output.version }}
+        run: echo ${{ steps.image.outputs.version }}
