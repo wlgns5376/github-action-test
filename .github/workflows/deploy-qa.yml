@@ -60,7 +60,15 @@ jobs:
           cd k8s-deploy-test
           kustomize edit set image app=wlgns5376/docker-image:${{ steps.image.outputs.version }}
           cat kustomization.yaml
+
+      - name: Commit files
+        run: |
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git commit -am "Update image tag"
-          git push -u origin main
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repository: wlgns5376/k8s-deploy-test
