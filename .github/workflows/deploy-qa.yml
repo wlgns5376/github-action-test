@@ -27,11 +27,11 @@ jobs:
       - name: QA Image build
         id: image
         run: |
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        echo ${{ github.ref }}
-        echo ${{ github.sha }} | cut -c1-8
-        echo VERSION=$VERSION
-        echo "::set-output name=version::$VERSION"
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          echo ${{ github.ref }}
+          echo ${{ github.sha }} | cut -c1-8
+          echo VERSION=$VERSION
+          echo "::set-output name=version::$VERSION"
 
       - name: QA deploy
         run: echo ${{ steps.image.output.version }}
