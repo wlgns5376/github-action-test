@@ -63,3 +63,5 @@ jobs:
           git commit -m "update file"
           git push -u origin master
 
+          kustomize build
+
