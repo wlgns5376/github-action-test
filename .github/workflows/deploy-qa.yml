@@ -60,9 +60,4 @@ jobs:
         run: |
           cd k8s-deploy-test
           kustomize edit set image app=wlgns5376/docker-image:${{ steps.image.outputs.version }}
-          git add .
-          git commit -m "update file"
-          git push -u origin master
-
-          kustomize build
-
+          cat kustomization.yaml
