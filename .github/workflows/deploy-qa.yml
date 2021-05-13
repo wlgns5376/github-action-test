@@ -41,9 +41,8 @@ jobs:
       - name: Get image version
         id: image
         run: |
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          VERSION=$(echo ${{ github.sha }} | cut -c1-8)
           echo ${{ github.ref }}
-          echo ${{ github.sha }} | cut -c1-8
           echo VERSION=$VERSION
           echo "::set-output name=version::$VERSION"
 
@@ -61,3 +60,10 @@ jobs:
           cd k8s-deploy-test
           kustomize edit set image app=wlgns5376/docker-image:${{ steps.image.outputs.version }}
           cat kustomization.yaml
+
+      - name: Commit file
+        run: |
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
+          git commit -am "Update image tag"
+          git push -u origin main
