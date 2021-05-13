@@ -33,6 +33,10 @@ jobs:
           echo VERSION=$VERSION
           echo "::set-output name=version::$VERSION"
   deploy:
+  
+    runs-on: ubuntu-latest
+    steps:
+      
       - name: Get image version
         id: image
         run: |
