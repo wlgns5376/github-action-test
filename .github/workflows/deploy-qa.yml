@@ -50,6 +50,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: wlgns5376/k8s-deploy-test
+          token: ${{ secrets.ACTIONS_TOKEN }}
           path: k8s-deploy-test
 
       - name: Setup Kustomize
@@ -67,10 +68,4 @@ jobs:
           git config --global user.email "action@github.com"
           git config --global user.name "GitHub Action"
           git commit -am "Update image tag"
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          repository: wlgns5376/k8s-deploy-test
-          directory: k8s-deploy-test
+          git push -u origin main
