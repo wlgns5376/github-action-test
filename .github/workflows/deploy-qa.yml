@@ -47,7 +47,7 @@ jobs:
           echo "::set-output name=version::$VERSION"
 
       - name: Checkout deploy repository
-        uses: actions/checkout
+        uses: actions/checkout@v2
         with:
           repository: wlgns5376/k8s-deploy-test
           path: k8s-deploy-test
